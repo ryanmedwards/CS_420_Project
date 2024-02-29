@@ -1,0 +1,81 @@
+
+create table center_points
+(
+	name nvarchar[256] not null,
+	short_name nvarchar[32] not null,
+	lat real not null,
+	lon real not null,
+	city nvarchar[32] not null,
+	foreign key (city) references cities(city)
+);
+
+insert into center_points values ('Purdue University Northwest', 'PNW', 41.5808, -87.4724, 'Hammond');
+
+
+create table airports 
+(
+	name nvarchar[256] not null,
+	short_name nvarchar[32] not null,
+	lat real not null,
+	lon real not null,
+	city nvarchar[32] not null,
+	iata nvarchar[8] not null,
+	icao nvarchar[8] not null, 
+	foreign key (city) references cities(city)
+);
+	
+insert into airports values ('O''Hare International Airport', 'O''Hare', 41.9802, -87.9090, 'Chicago', 'ORD', 'KORD');
+insert into airports values ('John F. Kennedy International Airport', 'JFK',40.6418, -73.7809, 'New York', 'JFK', 'KJFK');
+insert into airports values ('Los Angeles International Airport', 'LAX',33.9425, -118.4081, 'Los Angeles', 'LAX', 'KLAX');
+insert into airports values ('Denver International Airport', 'Denver',39.8563, -104.6764, 'Denver', 'DEN', 'KDEN');
+	
+	
+	
+	
+create table timezones 
+(
+	timezone nvarchar[32] not null primary key,
+	utc_time_dif int not null
+);
+
+insert into timezones values ('Eastern Standard Time', -18000);
+insert into timezones values ('Central Standard Time', -21600);
+insert into timezones values ('Mountain Standard Time', -25200);
+insert into timezones values ('Pacific Standard Time', -28800);
+	
+	
+	
+	
+	
+create table cities 
+(
+	city nvarchar[32] not null primary key,
+	region nvarchar[32] not null,
+	country nvarchar[32] not null,
+	timezone nvarchar[32] not null,
+	foreign key (timezone) references timezones (timezone)
+);
+
+insert into cities values ('Chicago', 'Illinois', 'United States', 'Central Standard Time');
+insert into cities values ('New York', 'New York', 'United States', 'Eastern Standard Time');
+insert into cities values ('Los Angeles', 'California', 'United States', 'Pacific Standard Time');
+insert into cities values ('Denver', 'Colorado', 'United States', 'Mountain Standard Time');
+insert into cities values ('Hammond', 'Indiana', 'United States', 'Central Standard Time');
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
