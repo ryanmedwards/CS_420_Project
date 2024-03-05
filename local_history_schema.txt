@@ -1,0 +1,100 @@
+
+
+
+create table sv_tables
+(
+	name string not null,
+	source_name string not null,
+	source_table string not null,
+	process_id int not null,
+	foreign key (process_id) references process(process_id)
+);
+
+
+
+create table process
+(
+	process_id int not null,
+	filter_id int not null,
+	filter_order int not null,
+	foreign key (filter_id) references filter(filter_id)
+);
+
+
+
+create table filter
+(
+	filter_id int primary key,
+	filter_table_name string not null
+);
+
+
+create table duplicates_filter
+(
+	filter_id primary key,
+	time boolean not null,
+	icao24 boolean not null,
+	lat boolean not null,
+	lon boolean not null,
+	velocity boolean not null,
+	heading boolean not null,
+	vertrate boolean not null,
+	callsign boolean not null,
+	onground boolean not null,
+	alert boolean not null,
+	spi boolean not null,
+	squawk boolean not null,
+	baroaltitude boolean not null,
+	geoaltitude boolean not null,
+	lastposupdate boolean not null,
+	lastcontact boolean not null,
+	hour boolean not null
+);
+
+create table nulls_filter
+(
+	filter_id primary key,
+	time boolean not null,
+	icao24 boolean not null,
+	lat boolean not null,
+	lon boolean not null,
+	velocity boolean not null,
+	heading boolean not null,
+	vertrate boolean not null,
+	callsign boolean not null,
+	onground boolean not null,
+	alert boolean not null,
+	spi boolean not null,
+	squawk boolean not null,
+	baroaltitude boolean not null,
+	geoaltitude boolean not null,
+	lastposupdate boolean not null,
+	lastcontact boolean not null,
+	hour boolean not null
+);
+
+create table boundary_box_filter
+(
+	filter_id primary key,
+	north real not null,
+	south real not null,
+	east real not null,
+	west real not null
+);
+
+create table boundary_airport_filter
+(
+	filter_id primary key,
+	airport_short_name nvarchar[32] not null,
+	distance int not null,
+	unit string not null,
+	is_box boolean not null,
+	foreign key (airport_short_name) references airport(short_name)
+);
+
+create table date_time_filter
+(
+	filter_id primary key,
+	start long not null,
+	duration int not null
+);
