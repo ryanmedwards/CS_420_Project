@@ -1,0 +1,81 @@
+
+
+
+create table sv_tables
+(
+	name text,
+	status text
+);
+
+create table sv_sources
+(
+	id integer,
+	source text,
+	location text
+);
+
+
+create table filter_date_time
+(
+	id integer, 
+	f_ord integer,
+	f_applied text,
+	start integer , 
+	duration integer 
+);
+
+create table filter_boundary_box
+(
+	id integer, 
+	f_ord integer,
+	f_applied text,
+	north real, 
+	south real, 
+	east real, 
+	west real 
+);
+
+
+create table filter_boundary_point
+(
+	id integer, 
+	f_ord integer,
+	f_applied text,
+	point_id integer, 
+	distance integer,
+	unit text,
+	shape text 
+);
+
+create table filter_duplicates
+(
+	id integer,
+	f_ord integer,
+	f_applied text,
+	selected integer 
+);
+
+create table filter_nulls
+(
+	id integer, 
+	f_ord integer,
+	f_applied text,
+	selected integer 
+);
+
+create table filter_expired
+(
+	id integer, 
+	f_ord integer,
+	f_applied text,
+	lastcontact_delay integer,
+	lastposupdate_delay integer 
+);
+
+create table filter_airlines
+(
+	id integer,
+	f_ord integer,
+	f_applied text,
+	icao text
+);

@@ -1,0 +1,10 @@
+drop table if exists test;
+delete from sv_tables;
+delete from sv_sources;
+delete from filter_duplicates;
+delete from filter_nulls;
+delete from filter_boundary_point;
+delete from filter_expired;
+delete from filter_boundary_box;
+delete from filter_date_time;
+delete from filter_airlines;
